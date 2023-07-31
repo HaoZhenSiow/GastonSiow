@@ -47,9 +47,10 @@ export default function Home() {
     <>
       <Header/>
       <MainStyle>
-        <Hero id="intro"/>
-        <About 
-          className="container contrast-bg"/>
+        <div id="intro">
+          <Hero/>
+          <About className="container contrast-bg"/>
+        </div>
         <PortfolioSection 
           id="portfolio"
           className="container home__section"/>

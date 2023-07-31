@@ -37,6 +37,11 @@ const HeaderStyled = styled.header`
 
       li {
         translate: 0 var(--nav-link-translateY);
+
+        a {
+          pointer-events: none;
+        }
+        
       }
     }
 
@@ -54,7 +59,10 @@ const HeaderStyled = styled.header`
         margin-block: .5em;
       }
 
-      a { position: relative; }
+      a { 
+        position: relative;
+        pointer-events: auto;
+      }
 
       a.active::before {
         content: '';
@@ -94,18 +102,16 @@ export default function Header() {
 
     function addMinifiedClass() {
       ulElement.classList.add('minified')
-      liItems.forEach(item => {
-        item.removeEventListener('click', addMinifiedClass)
-      })
       setTimeout(() => {
+        ulElement.addEventListener('click', removeMinifiedClass)
         liItems.forEach(item => {
-          ulElement.addEventListener('click', removeMinifiedClass)
+          item.removeEventListener('click', addMinifiedClass)
         })
       }, 100)
-      console.log(liItems)
+      
     }
 
-    function removeMinifiedClass(e) {
+    function removeMinifiedClass() {
       ulElement.classList.remove('minified')
       ulElement.removeEventListener('click', removeMinifiedClass)
       liItems.forEach(item => {
@@ -121,7 +127,7 @@ export default function Header() {
         <nav>
           <ul className="minified">
             <li><Link id="intro-link" to="intro" spy={true} smooth={true} offset={0} duration={0}>Intro <sup>01</sup></Link></li>
-            <li><Link id="portfolio-link" to="portfolio" spy={true} smooth={true} offset={-10} duration={0}>Portfolio <sup>02</sup></Link></li>
+            <li><Link id="portfolio-link" to="portfolio" spy={true} smooth={true} offset={0} duration={0}>Portfolio <sup>02</sup></Link></li>
             <li><Link id="testimonials-link" to="testimonials" spy={true} smooth={true} offset={0} duration={0}>Testimonials <sup>03</sup></Link></li>
             <li><Link id="contact-link" to="contact" spy={true} smooth={true} offset={0} duration={0}>Contact <sup>04</sup></Link></li>
           </ul> 
