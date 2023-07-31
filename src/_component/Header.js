@@ -8,6 +8,8 @@ const HeaderStyled = styled.header`
   position: fixed;
   top: 0;
   margin-top: 12px;
+  mix-blend-mode: difference;
+  z-index: 99;
 
   & > div {
     display: flex;
@@ -104,7 +106,6 @@ export default function Header() {
     }
 
     function removeMinifiedClass(e) {
-      console.log('remove')
       ulElement.classList.remove('minified')
       ulElement.removeEventListener('click', removeMinifiedClass)
       liItems.forEach(item => {
@@ -119,10 +120,10 @@ export default function Header() {
         <Link to="intro" spy={true} smooth={true} offset={0} duration={0}>Gaston Siow</Link>
         <nav>
           <ul className="minified">
-            <li><Link id="intro-link" to="intro" spy={true} smooth={true} offset={0} duration={0}>Intro<sup>01</sup></Link></li>
-            <li><Link id="portfolio-link" to="portfolio" spy={true} smooth={true} offset={0} duration={0}>Portfolio<sup>02</sup></Link></li>
-            <li><Link id="testimonials-link" to="testimonials" spy={true} smooth={true} offset={0} duration={0}>Testimonials<sup>03</sup></Link></li>
-            <li><Link id="contact-link" to="contact" spy={true} smooth={true} offset={0} duration={0}>Contact<sup>04</sup></Link></li>
+            <li><Link id="intro-link" to="intro" spy={true} smooth={true} offset={0} duration={0}>Intro <sup>01</sup></Link></li>
+            <li><Link id="portfolio-link" to="portfolio" spy={true} smooth={true} offset={-10} duration={0}>Portfolio <sup>02</sup></Link></li>
+            <li><Link id="testimonials-link" to="testimonials" spy={true} smooth={true} offset={0} duration={0}>Testimonials <sup>03</sup></Link></li>
+            <li><Link id="contact-link" to="contact" spy={true} smooth={true} offset={0} duration={0}>Contact <sup>04</sup></Link></li>
           </ul> 
         </nav>
       </div>
