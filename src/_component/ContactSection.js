@@ -1,8 +1,30 @@
 import styled from 'styled-components'
+import { useState, useRef } from 'react'
+import submitForm from '@/_actions/submitForm'
 
 const ContactSectionStyled = createContactSectionStyled()
 
 export default function ContactSection(props) {
+  const [isSending, setIsSending] = useState(false)
+  const formRef = useRef()
+
+  async function handleSubmit(formData) {
+    setIsSending(true)
+    if (/^\d{8}$/.test(formData.get('phone')) === false) {
+      alert('Please enter a valid phone number')
+      setIsSending(false)
+      return
+    }
+    const { status } = await submitForm(formData)
+    if ( status === 200 ) {
+      formRef.current.reset()
+      alert('Thanks for your message! We will get back to you soon.')
+    } else {
+      alert('Something went wrong, please try again.')
+    }
+    setIsSending(false)
+  }
+
   return (
     <ContactSectionStyled id={props.id} className={props.className}>
       <h2>Get In Touch</h2>
@@ -13,11 +35,11 @@ export default function ContactSection(props) {
         <p>1234 5678</p>
         <p>hk.siow@comuna.comg.sg</p>
       </address>
-      <form action="">
+      <form ref={formRef} action={handleSubmit}>
         <label htmlFor="name">Name <span>(required)</span></label>
         <input type="text" name="name" id="name" required/>
         <label htmlFor="phone">Phone <span>(required)</span></label>
-        <input type="tel" name="phone" id="phone" required/>
+        <input type="number" name="phone" id="phone" required/>
         <label htmlFor="email">Email <span>(required)</span></label>
         <input type="email" name="email" id="email" required/>
         <label htmlFor="type">Housing Type <span>(required)</span></label>
@@ -30,7 +52,7 @@ export default function ContactSection(props) {
         <input type="date" name="collection" id="collection" required/>
         <label htmlFor="message">Message <span>(if applicable)</span></label>
         <textarea name="message" id="message" rows="10"></textarea>
-        <button type="submit">SUBMIT</button>
+        <button type="submit" disabled={isSending}>SUBMIT</button>
       </form>
     </ContactSectionStyled>
   );
@@ -73,4 +95,14 @@ function createContactSectionStyled() {
       }
     }
   `
+}
+
+function debounce(func, delay) {
+  let timer;
+  return function(...args) {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay)
+  }
 }
