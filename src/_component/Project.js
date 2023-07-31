@@ -9,7 +9,7 @@ export default function Project(props) {
 
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && innerWidth < 768) {
       window.addEventListener('scroll', handleScroll)
     }
     return () => {
@@ -54,13 +54,13 @@ function createProjectStyled() {
       line-height: 0;
       position: relative;
 
-      &::before {
+      &:before {
         content: "";
         position: absolute;
         width: 100%;
         height: 100%;
         border-radius: 5px;
-        background: url(portfolio.png);
+        background: url("portfolio.png");
         background-repeat: no-repeat;
         background-size: cover;
       }
@@ -69,15 +69,23 @@ function createProjectStyled() {
         width: 100%;
         height: auto;
         border-radius: 5px;
-        -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
-        mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
+        -webkit-mask-image: url("urban-sprite.png");
+        mask-image: url("urban-sprite.png");
         -webkit-mask-size: 3000% 100%;
         mask-size: 3000% 100%;
-        animation: ani2 0.7s steps(29) forwards;
+        -webkit-mask-position: .5% 0;
+        mask-position: .5% 0;
+        /* animation: ani2 0.7s steps(29) forwards; */
       }
 
-      img.active {
+      img:hover, img.active {
         animation: ani 0.7s steps(29) forwards;
+      }
+
+      @media (min-width: 768px) {
+        img {
+          animation: ani2 0.7s steps(29) forwards;
+        }
       }
     }
 

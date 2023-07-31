@@ -24,6 +24,8 @@ function createTestimonialStyled() {
       font-family: var(--pri-font);
       font-size: 1.2em;
       font-weight: bold;
+      line-height: 1.1em;
+      margin-bottom: 8px;
     }
 
     p:not(.quote) {
