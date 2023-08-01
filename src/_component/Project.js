@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 
 const ProjectStyled = createProjectStyled()
 
-export default function Project(props) {
+export default function Project({ title, styling, housingType, imgSrc, sketchSrc }) {
   const imgRef = useRef()
 
 
@@ -25,16 +25,16 @@ export default function Project(props) {
   }, [])
 
   return (
-    <ProjectStyled className={props.className}>
+    <ProjectStyled imgSrc={imgSrc}>
         <div>
           <div className="project">
-            <h3>641A Senja Close</h3>
+            <h3>{title}</h3>
             <div className="drawing">
-              <Image src="/portfolio.jpg" alt="portfolio" width={351} height={202} ref={imgRef}/>
+              <Image src={sketchSrc} alt="portfolio" width={351} height={202} ref={imgRef}/>
             </div>
             <div className="project__details">
-              <p className='style'>Modern Lux</p>
-              <p>3 Room BTO</p>
+              <p className='style'>{styling}</p>
+              <p>{housingType}</p>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ function createProjectStyled() {
         width: 100%;
         height: 100%;
         border-radius: 5px;
-        background: url("portfolio.png");
+        background: url(${props => props.imgSrc});
         background-repeat: no-repeat;
         background-size: cover;
       }
@@ -75,16 +75,15 @@ function createProjectStyled() {
         mask-size: 3000% 100%;
         -webkit-mask-position: .5% 0;
         mask-position: .5% 0;
-        /* animation: ani2 0.7s steps(29) forwards; */
       }
 
       img:hover, img.active {
-        animation: ani 0.7s steps(29) forwards;
+        animation: ani 1s steps(29) forwards;
       }
 
       @media (min-width: 768px) {
         img {
-          animation: ani2 0.7s steps(29) forwards;
+          animation: ani2 1s steps(29) forwards;
         }
       }
     }

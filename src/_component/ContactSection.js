@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import { useState, useRef } from 'react'
+import { BsFillTelephoneFill } from 'react-icons/bs'
+import { MdEmail } from 'react-icons/md'
 import submitForm from '@/_actions/submitForm'
 
 const ContactSectionStyled = createContactSectionStyled()
@@ -29,11 +31,12 @@ export default function ContactSection(props) {
     <ContactSectionStyled id={props.id} className={props.className}>
       <h2>Get In Touch</h2>
       <address>
-        <p>Blk 126 Bukit Merah Lan 1</p>
-        <p>#01-214</p>
-        <p>Singapore 150126</p>
-        <p>1234 5678</p>
-        <p>hk.siow@comuna.comg.sg</p>
+        <p className='companyName'>Comuna Interiors Pte Ltd</p>
+        <p>261 Waterloo St</p>
+        <p>#02-07 Waterloo Centre</p>
+        <p>Singapore 180261</p>
+        <p><BsFillTelephoneFill className='icon'/> 8264 2952</p>
+        <p><MdEmail className='icon'/> hk.siow@comuna.comg.sg</p>
       </address>
       <form ref={formRef} action={handleSubmit} method='POST'>
         <label htmlFor="name">Name <span>(required)</span></label>
@@ -62,6 +65,17 @@ function createContactSectionStyled() {
   return styled.div`
     h2 {
       margin-bottom: 36px !important;
+    }
+
+    .companyName {
+      font-size: 1.2em;
+      font-weight: 700;
+      font-family: var(--sec-font);
+      color: var(--highligh-color);
+    }
+
+    .icon {
+      transform: translateY(2px) scale(1.2);
     }
 
     form {
