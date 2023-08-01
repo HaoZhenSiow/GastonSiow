@@ -23,7 +23,6 @@ export default function About(props) {
         <li>Autocad 2D/3D</li>
         <li>2D Drawings</li>
         <li>Adobe Illustrator</li>
-        <li>Microsoft Excel</li>
       </ul>
       <Image src="/cert.jpg" alt="Renovation for Public Housing Certification" width={1024} height={852}></Image>
     </AboutStyled>
