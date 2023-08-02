@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Image from "next/image"
 import { useEffect, useRef } from 'react';
 
@@ -43,6 +43,28 @@ export default function Project({ title, styling, housingType, imgSrc, sketchSrc
 }
 
 function createProjectStyled() {
+  const ani = keyframes`
+    from {
+      -webkit-mask-position: 0 0;
+      mask-position: 0 0;
+    }
+    to {
+      -webkit-mask-position: 100% 0;
+      mask-position: 100% 0;
+    }
+  `
+
+  const ani2 = keyframes`
+    from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+    }
+    to {
+      -webkit-mask-position: 0 0;
+      mask-position: 0 0;
+    }
+  `
+
   return styled.div.attrs(props => ({
     $imgSrc: props.$imgSrc || ''
   }))`
@@ -80,12 +102,12 @@ function createProjectStyled() {
       }
 
       img:hover, img.active {
-        animation: ani 1s steps(29) forwards;
+        animation: ${ani} 1s steps(29) forwards;
       }
 
       @media (min-width: 768px) {
         img {
-          animation: ani2 1s steps(29) forwards;
+          animation: ${ani2} 1s steps(29) forwards;
         }
       }
     }

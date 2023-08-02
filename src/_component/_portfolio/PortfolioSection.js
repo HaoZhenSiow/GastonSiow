@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import projects from '@/_utils/projects';
+import projects from '@/_data/projects';
 
 import Project from './Project';
 

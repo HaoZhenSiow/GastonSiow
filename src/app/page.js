@@ -2,27 +2,19 @@
 import { styled } from "styled-components"
 import Image from "next/image"
 
-import Header from "@/_component/Header"
-import Hero from "@/_component/Hero"
-import About from "@/_component/About"
-import PortfolioSection from "@/_component/PortfolioSection"
+import Header from "@/_component/_header/Header"
+import Hero from "@/_component/_intro/Hero"
+import About from "@/_component/_intro/About"
+import PortfolioSection from "@/_component/_portfolio/PortfolioSection"
 import TestimonialSection from "@/_component/TestimonialSection"
 import ContactSection from "@/_component/ContactSection"
 import Footer from "@/_component/Footer"
 
 
 const MainStyle = styled.main`
-  /* #intro {
-    line-height: 0;
-
-    & > * {
-      line-height: normal;
-    }
-  } */
-
   .home__section, .contrast-bg {
     background-color: var(--mn-bg-color);
-    padding-top: 80px;
+    padding-top: 120px;
     padding-bottom: 136px;
 
     h2 {

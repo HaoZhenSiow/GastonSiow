@@ -34,14 +34,11 @@ function createAboutStyled() {
     h3 {
       font-family: var(--sec-font);
       font-size: 32px;
-      /* text-align: center; */
       font-weight: 400;
       margin-bottom: 28px;
     }
 
     p {
-      /* text-align: center; */
-      /* text-wrap: balance; */
       margin-block: 1em;
     }
 
