@@ -38,7 +38,7 @@ export default function ContactSection(props) {
         <p><BsFillTelephoneFill className='icon'/> 8264 2952</p>
         <p><MdEmail className='icon'/> hk.siow@comuna.com.sg</p>
       </address>
-      <form ref={formRef} action={handleSubmit} method='POST'>
+      <form ref={formRef} action={handleSubmit}>
         <label htmlFor="name">Name <span>(required)</span></label>
         <input type="text" name="name" id="name" required/>
         <label htmlFor="phone">Phone <span>(required)</span></label>

@@ -7,7 +7,7 @@ export default function Testimonial(props) {
   return (
     <TestimonialStyled className={props.className}>
       <p className="quote">"Really love the outcome of the renovation!"</p>
-      <Image src="/review.jpg" alt="portfolio" width={351} height={193}></Image>
+      <Image src="/review.jpg" alt="portfolio" width={351} height={193} priority={true}></Image>
       <p>Did not regret engaging Hamid & Sons Interior Design for our home reno. Big shout out to our ID Muhammad from Marsiling Branch! You can really put your trust...</p>
     </TestimonialStyled>
   );

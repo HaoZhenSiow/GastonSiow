@@ -24,7 +24,7 @@ export default function About(props) {
         <li>2D Drawings</li>
         <li>Adobe Illustrator</li>
       </ul>
-      <Image src="/cert.jpg" alt="Renovation for Public Housing Certification" width={1024} height={852}></Image>
+      <Image src="/cert.jpg" alt="Renovation for Public Housing Certification" width={1024} height={852} priority={true}></Image>
     </AboutStyled>
   );
 }

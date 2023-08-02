@@ -25,12 +25,12 @@ export default function Project({ title, styling, housingType, imgSrc, sketchSrc
   }, [])
 
   return (
-    <ProjectStyled imgSrc={imgSrc}>
+    <ProjectStyled $imgSrc={imgSrc}>
         <div>
           <div className="project">
             <h3>{title}</h3>
             <div className="drawing">
-              <Image src={sketchSrc} alt="portfolio" width={351} height={202} ref={imgRef}/>
+              <Image src={sketchSrc} alt="portfolio" width={351} height={202} ref={imgRef} priority={true}/>
             </div>
             <div className="project__details">
               <p className='style'>{styling}</p>
@@ -43,7 +43,9 @@ export default function Project({ title, styling, housingType, imgSrc, sketchSrc
 }
 
 function createProjectStyled() {
-  return styled.div`
+  return styled.div.attrs(props => ({
+    $imgSrc: props.$imgSrc || ''
+  }))`
     margin-bottom: 40px;
 
     &:last-child {
@@ -60,7 +62,7 @@ function createProjectStyled() {
         width: 100%;
         height: 100%;
         border-radius: 5px;
-        background: url(${props => props.imgSrc});
+        background: url(${props => props.$imgSrc});
         background-repeat: no-repeat;
         background-size: cover;
       }

@@ -12,6 +12,14 @@ import Footer from "@/_component/Footer"
 
 
 const MainStyle = styled.main`
+  /* #intro {
+    line-height: 0;
+
+    & > * {
+      line-height: normal;
+    }
+  } */
+
   .home__section, .contrast-bg {
     background-color: var(--mn-bg-color);
     padding-top: 80px;

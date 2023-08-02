@@ -43,10 +43,10 @@ export default function Hero() {
   const heroImageWidth = heroImageHeight/450*280
 
   return (
-    <HeroStyled id="hero">
+    <HeroStyled>
       <h1>Hi, my name is<br/><span>GASTON SIOW</span></h1>
       <p>I turn <span>ideas</span> into <span>reality</span></p>
-      <Image src="/gaston1.png" alt="Gaston Siow" width={heroImageWidth} height={heroImageHeight} priority/>
+      <Image src="/gaston1.png" alt="Gaston Siow" width={heroImageWidth} height={heroImageHeight} priority={true}/>
     </HeroStyled>
   )
 }
