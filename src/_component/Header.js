@@ -79,10 +79,10 @@ export default function Header() {
         <Link href="/">Gaston Siow</Link>
         <nav>
           <ul ref={ulRef}>
-            <NavLink id="intro-link" to="intro">Intro <sup>01</sup></NavLink>
-            <NavLink id="portfolio-link" to="portfolio">Portfolio <sup>02</sup></NavLink>
-            <NavLink id="testimonials-link" to="testimonials">Testimonials <sup>03</sup></NavLink>
-            <NavLink id="contact-link" to="contact">Contact <sup>04</sup></NavLink>
+            <NavLink id="intro-link" to="intro">Intro<sup>01</sup></NavLink>
+            <NavLink id="portfolio-link" to="portfolio">Portfolio<sup>02</sup></NavLink>
+            <NavLink id="testimonials-link" to="testimonials">Testimonials<sup>03</sup></NavLink>
+            <NavLink id="contact-link" to="contact">Contact<sup>04</sup></NavLink>
           </ul> 
         </nav>
       </div>
