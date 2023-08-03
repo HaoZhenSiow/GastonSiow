@@ -25,19 +25,15 @@ export default function Project({ title, styling, housingType, imgSrc, sketchSrc
   }, [])
 
   return (
-    <ProjectStyled $imgSrc={imgSrc}>
-        <div>
-          <div className="project">
-            <h3>{title}</h3>
-            <div className="drawing">
-              <Image src={sketchSrc} alt="portfolio" width={351} height={202} ref={imgRef} priority={true}/>
-            </div>
-            <div className="project__details">
-              <p className='style'>{styling}</p>
-              <p>{housingType}</p>
-            </div>
-          </div>
-        </div>
+    <ProjectStyled $imgSrc={imgSrc} className="project">
+      <div className="project__details">
+        <p className='style'>{styling}</p>
+        <p>{housingType}</p>
+      </div>
+      <div className="drawing">
+        <Image src={sketchSrc} alt="portfolio" width={351} height={202} ref={imgRef} priority={true}/>
+      </div>
+      <h3>{title}</h3>
     </ProjectStyled>
   );
 }
@@ -68,6 +64,8 @@ function createProjectStyled() {
   return styled.div.attrs(props => ({
     $imgSrc: props.$imgSrc || ''
   }))`
+    display: flex;
+    flex-direction: column;
     margin-bottom: 40px;
 
     &:last-child {
@@ -113,9 +111,10 @@ function createProjectStyled() {
     }
 
     h3 {
-      font-size: var(--project-h3-fs);
+      font-size: var(--portfolio-h3-fs);
       font-family: var(--sec-font);
       margin-bottom: .4em;
+      flex-grow: 1;
     }
 
     .project__details {

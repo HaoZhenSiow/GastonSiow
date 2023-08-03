@@ -30,41 +30,64 @@ export default function ContactSection(props) {
   return (
     <ContactSectionStyled id={props.id} className={props.className}>
       <h2>Get In Touch</h2>
-      <address>
-        <p className='companyName'>Comuna Interiors Pte Ltd</p>
-        <p>261 Waterloo St</p>
-        <p>#02-07 Waterloo Centre</p>
-        <p>Singapore 180261</p>
-        <p><BsFillTelephoneFill className='icon'/> 8264 2952</p>
-        <p><MdEmail className='icon'/> hk.siow@comuna.com.sg</p>
-      </address>
-      <form ref={formRef} action={handleSubmit}>
-        <label htmlFor="name">Name <span>(required)</span></label>
-        <input type="text" name="name" id="name" required/>
-        <label htmlFor="phone">Phone <span>(required)</span></label>
-        <input type="number" name="phone" id="phone" required/>
-        <label htmlFor="email">Email <span>(required)</span></label>
-        <input type="email" name="email" id="email" required/>
-        <label htmlFor="type">Housing Type <span>(required)</span></label>
-        <select name="type" id="type" required>
-          <option value="BTO">BTO</option>
-          <option value="HDB">HDB</option>
-          <option value="Condo">Condo</option>
-        </select>
-        <label htmlFor="collection">Key Collection Date <span>(required)</span></label>
-        <input type="date" name="collection" id="collection" required/>
-        <label htmlFor="message">Message <span>(if applicable)</span></label>
-        <textarea name="message" id="message" rows="10"></textarea>
-        <button type="submit" disabled={isSending}>SUBMIT</button>
-      </form>
+      <div>
+        <address>
+          <p className='companyName'>Comuna Interiors Pte Ltd</p>
+          <p>261 Waterloo St</p>
+          <p>#02-07 Waterloo Centre</p>
+          <p>Singapore 180261</p>
+          <p><BsFillTelephoneFill className='icon'/> 8264 2952</p>
+          <p><MdEmail className='icon'/> hk.siow@comuna.com.sg</p>
+        </address>
+        <form ref={formRef} action={handleSubmit}>
+          <label htmlFor="name">Name <span>(required)</span></label>
+          <input type="text" name="name" id="name" required/>
+          <label htmlFor="phone">Phone <span>(required)</span></label>
+          <input type="number" name="phone" id="phone" required/>
+          <label htmlFor="email">Email <span>(required)</span></label>
+          <input type="email" name="email" id="email" required/>
+          <label htmlFor="type">Housing Type <span>(required)</span></label>
+          <select name="type" id="type" required>
+            <option value="BTO">BTO</option>
+            <option value="HDB">HDB</option>
+            <option value="Condo">Condo</option>
+          </select>
+          <label htmlFor="collection">Key Collection Date <span>(required)</span></label>
+          <input type="date" name="collection" id="collection" required/>
+          <label htmlFor="message">Message <span>(if applicable)</span></label>
+          <textarea name="message" id="message" rows="10"></textarea>
+          <button type="submit" disabled={isSending}>SUBMIT</button>
+        </form>
+      </div>
     </ContactSectionStyled>
   );
 }
 
 function createContactSectionStyled() {
   return styled.div`
+    & > div {
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: 900px) {
+        flex-direction: row-reverse;
+        column-gap: 28px;
+
+        form {
+          width: 50%;
+          flex-grow: 1;
+          margin-top: 0;
+
+          label:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+    }
     h2 {
-      margin-bottom: 36px !important;
+      @media (max-width: 899px) {
+       margin-bottom: 36px !important;
+      }
     }
 
     .companyName {
@@ -109,14 +132,4 @@ function createContactSectionStyled() {
       }
     }
   `
-}
-
-function debounce(func, delay) {
-  let timer;
-  return function(...args) {
-    clearTimeout(timer)
-    timer = setTimeout(() => {
-      func.apply(this, args);
-    }, delay)
-  }
 }

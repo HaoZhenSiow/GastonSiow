@@ -33,9 +33,12 @@ function createAboutStyled() {
   return styled.div`
     h3 {
       font-family: var(--sec-font);
-      font-size: 32px;
-      font-weight: 400;
-      margin-bottom: 28px;
+      font-size: var(--section-h3-fs);
+      margin-bottom: .5em;
+    }
+
+    h3:nth-child(5) {
+      margin-top: 1em;
     }
 
     p {
@@ -51,6 +54,10 @@ function createAboutStyled() {
       width: 100%;
       height: auto;
       border-bottom: black solid 4px;
+
+      @media (min-width: 768px) {
+        width: clamp(20.31rem, calc(18.17rem + 4.46vw), 22.19rem); /* 325px to 355px, 768px, 1440px */
+      }
     }
   `
 }

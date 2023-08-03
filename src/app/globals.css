@@ -17,10 +17,24 @@
   --white-bg-h2: #6D6D6D;
   --dark-bg-h2: #A7A7A7;
   --logo-fs: clamp(1.50rem, calc(1.20rem + 1.44vw), 2.50rem); /* 24px to 40px, 330px, 1440px */
-  --h1-fs: 26px;
-  --name-fs: 44px;
+  --h1-fs: clamp(1.63rem, calc(1.07rem + 2.70vw), 3.50rem); /* 26px to 56px, 330px, 1440px */
+  --name-fs: clamp(2.75rem, calc(2.01rem + 3.60vw), 5.25rem); /* 44px to 84px, 330px, 1440px */
   --hero-fs: 18px;
-  --project-h3-fs: 32px;
+  --section-h3-fs: clamp(2.00rem, calc(1.74rem + 1.26vw), 2.88rem); /* 32px to 46px, 330px, 1440px */
+  --portfolio-h3-fs: clamp(2.00rem, calc(1.93rem + 0.36vw), 2.25rem); /* 32px to 36px, 330px, 1440px */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --name-fs: clamp(3.13rem, calc(2.00rem + 2.34vw), 3.50rem); /* 50px to 56px, 330px, 1024px */
+    --hero-fs: clamp(1.13rem, calc(0.41rem + 1.49vw), 1.75rem); /* 18px to 28px, 768px, 1440px */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --name-fs: clamp(3.50rem, calc(-4.50rem + 12.50vw), 6.75rem); /* 56px to 108px, 1024px, 1440px */
+  }
 }
 
 /* *:not(html, small, blockquote *)  {
