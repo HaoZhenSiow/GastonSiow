@@ -22,8 +22,12 @@ function createPortfolioSectionStyled() {
   return styled.div`
     .projects {
       display: grid;
-      grid-template-columns: repeat( auto-fit, minmax(400px, 1fr));
+      
       grid-column-gap: 20px;
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat( auto-fit, minmax(400px, 1fr));
+      }
     }
   `
 }

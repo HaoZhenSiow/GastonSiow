@@ -16,12 +16,6 @@ export default function Hero() {
   )
 }
 
-// function nameSVG() {
-//   return (
-    
-//   )
-// }
-
 function createHeroStyled() {
   return styled.div`
     background-color: var(--mn-bg-color);
