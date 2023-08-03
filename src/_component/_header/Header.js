@@ -2,6 +2,7 @@
 import { styled } from "styled-components"
 import { useEffect, useRef } from "react"
 import Link from "next/link"
+import { FaWhatsapp } from "react-icons/fa"
 
 import NavLink from "./NavLink"
 
@@ -35,8 +36,9 @@ export default function Header() {
   })
 
   return (
-    <HeaderStyled className="container">
-        <Link href="/">Gaston</Link>
+    <>
+      <HeaderStyled className="container">
+        <Link href="/" id="logo">Gaston</Link>
         <nav>
           <ul ref={ulRef}>
             <NavLink id="intro-link" to="intro">Intro<sup>01</sup></NavLink>
@@ -45,7 +47,10 @@ export default function Header() {
             <NavLink id="contact-link" to="contact">Contact<sup>04</sup></NavLink>
           </ul> 
         </nav>
+        <Link href="https://api.whatsapp.com/send?phone=6582682952" id="whatsapp-link"><FaWhatsapp/>Whatsapp</Link>
+        
       </HeaderStyled>
+    </>
   )
 }
 
@@ -59,7 +64,8 @@ function createHeaderStyled() {
     z-index: 99;
     mix-blend-mode: difference;
 
-    & > a {
+    #logo {
+      align-self: flex-start;
       font-family: var(--sec-font);
       font-size: var(--logo-fs);
       font-weight: 700;
@@ -126,6 +132,24 @@ function createHeaderStyled() {
             -webkit-tap-highlight-color: transparent;
           }
         }
+      }
+    }
+
+    #whatsapp-link {
+      position: fixed;
+      right: var(--paddingX);
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-weight: 400;
+
+      @media (min-width: 1500px) {
+        translate: 150px;
+      }
+      
+      svg {
+        font-size: 3em;
       }
     }
   `
