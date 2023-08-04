@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import Image from "next/image"
 import { useEffect, useRef } from 'react';
+import Bowser from "bowser"
 
 const ProjectStyled = createProjectStyled()
 
@@ -9,8 +10,11 @@ export default function Project({ title, styling, housingType, imgSrc, sketchSrc
 
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && innerWidth < 768) {
-      window.addEventListener('scroll', handleScroll)
+    if (typeof window !== 'undefined') {
+      const userAgent = Bowser.getParser(window.navigator.userAgent),
+            deviceType = userAgent.getPlatform().type
+
+      deviceType !== 'desktop' && window.addEventListener('scroll', handleScroll)
     }
     return () => {
       window.removeEventListener('scroll', handleScroll)
@@ -25,7 +29,7 @@ export default function Project({ title, styling, housingType, imgSrc, sketchSrc
   }, [])
 
   return (
-    <ProjectStyled $imgSrc={imgSrc} className="project" href='/portfolio/tt'>
+    <ProjectStyled $imgSrc={imgSrc} className="project" href={`/portfolio/${title.replace(/\s+/g, '')}`}>
       <div className="project__details">
         <p className='style'>{styling}</p>
         <p>{housingType}</p>

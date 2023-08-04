@@ -1,8 +1,9 @@
 'use client'
-import { styled } from "styled-components"
 import { useEffect, useRef } from "react"
-import Link from "next/link"
 import { FaWhatsapp } from "react-icons/fa"
+import { styled } from "styled-components"
+import Link from "next/link"
+import Bowser from "bowser"
 
 import NavLink from "./NavLink"
 
@@ -21,14 +22,24 @@ export default function Header() {
     }
 
     if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', onScroll)
-    }
+      const userAgent = Bowser.getParser(window.navigator.userAgent),
+            deviceType = userAgent.getPlatform().type
 
-    ulElement.addEventListener('click', removeMinifiedClass)
+      window.addEventListener('scroll', onScroll)
+
+      if (deviceType === 'desktop') {
+        ulElement.addEventListener('mouseover', removeMinifiedClass)
+        ulElement.addEventListener('mouseout', addMinifiedClass)
+      } else {
+        ulElement.addEventListener('click', removeMinifiedClass)
+      }
+    }
 
     return () => {
       observer.disconnect()
       ulElement.removeEventListener('click', removeMinifiedClass)
+      ulElement.removeEventListener('mouseover', removeMinifiedClass)
+      ulElement.removeEventListener('mouseout', addMinifiedClass)
       liItems.forEach(item => {
         item.removeEventListener('click', handleNavClick)
       })
@@ -127,8 +138,8 @@ function createHeaderStyled() {
 
         li {
           translate: 0 var(--nav-link-translateY);
+          pointer-events: none;
           a {
-            pointer-events: none;
             -webkit-tap-highlight-color: transparent;
           }
         }
@@ -218,15 +229,15 @@ function onScroll() {
 
   if (scrollY === 0) {
     ulElement.classList.remove('minified');
-    if (innerWidth >= 768) {
-      ulElement.removeEventListener('mouseover', removeMinifiedClass)
-      ulElement.removeEventListener('mouseout', addMinifiedClass)
-    }
+    // if (innerWidth >= 768) {
+    //   ulElement.removeEventListener('mouseover', removeMinifiedClass)
+    //   ulElement.removeEventListener('mouseout', addMinifiedClass)
+    // }
   } else {
     ulElement.classList.add('minified');
-    if (innerWidth >= 768) {
-      ulElement.addEventListener('mouseover', removeMinifiedClass)
-      ulElement.addEventListener('mouseout', addMinifiedClass)
-    }
+    // if (innerWidth >= 768) {
+    //   ulElement.addEventListener('mouseover', removeMinifiedClass)
+    //   ulElement.addEventListener('mouseout', addMinifiedClass)
+    // }
   }
 }
