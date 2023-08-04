@@ -25,7 +25,7 @@ export default function Project({ title, styling, housingType, imgSrc, sketchSrc
   }, [])
 
   return (
-    <ProjectStyled $imgSrc={imgSrc} className="project">
+    <ProjectStyled $imgSrc={imgSrc} className="project" href='/portfolio/tt'>
       <div className="project__details">
         <p className='style'>{styling}</p>
         <p>{housingType}</p>
@@ -61,7 +61,7 @@ function createProjectStyled() {
     }
   `
 
-  return styled.div.attrs(props => ({
+  return styled.a.attrs(props => ({
     $imgSrc: props.$imgSrc || ''
   }))`
     display: flex;
