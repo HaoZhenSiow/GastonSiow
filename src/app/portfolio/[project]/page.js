@@ -5,23 +5,21 @@ import { ImCross } from 'react-icons/im'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { useState } from 'react'
 
-import Vijay, { vijayPoints } from '@/_floorplan/Vijay'
+import FloorPlan6, { floorplan6Points } from '@/_floorplan/FloorPlan6'
+import FloorPlan7, { floorplan7Points } from '@/_floorplan/FloorPlan7'
 
 const MainStyle = createMainStyled()
 
 export default function Home({ params }) {
   const [target, setTarget] = useState(null),
-        projects = {
-          VIJAYCondo: {
-            name: 'Vijay Condo',
-            jsx: <Vijay className='main-svg' setTarget={setTarget}/>,
-            points: vijayPoints
-          }
-        },
-        name = projects[params.project] ? projects[params.project].name : '',
-        floorplan = projects[params.project] ? projects[params.project].jsx : '',
-        points = projects[params.project] ? projects[params.project].points : [],
-        pointCount = projects[params.project] ? projects[params.project].points.length : 0
+
+        prevBtnAttrs = { className: 'clickable', onClick: handleClickPrevious },
+        nextBTNAttrs = { className: 'clickable', onClick: handleClickNext },
+
+        projects = createProjectList(setTarget),
+        project = projects[params.project] ? projects[params.project] : {},
+        { name = '', jsx = '', points = [] } = project,
+        pointCount = points.length
 
   return (
     <MainStyle className='container'>
@@ -30,35 +28,33 @@ export default function Home({ params }) {
         <div className='dialog'>
           <div className="dialog__content">
             <ImCross className='cross clickable' onClick={() => setTarget(null)}/>
-            <img src={`/portfolio/vijay/${target}.jpg`} alt={points[target]}/>
+            <img src={`/portfolio/${name}/${target}.jpg`} alt={points[target]}/>
             <div className='controll'>
-              <div className='clickable' onClick={() => {
-                if (target === 1) {
-                  setTarget(pointCount)
-                  return
-                }
-                setTarget(target-1)
-              }}>
-                <IoIosArrowBack/> Previous
-              </div>
-              <div className='clickable' onClick={() => {
-                if (target === pointCount) {
-                  setTarget(1)
-                  return
-                }
-                setTarget(target+1)
-              }}>
-                Next <IoIosArrowForward/>
-              </div>
+              <div {...prevBtnAttrs}><IoIosArrowBack/> Previous</div>
+              <div {...nextBTNAttrs}>Next <IoIosArrowForward/></div>
             </div>
           </div>
         </div>
       )}
-      <div className='main'>
-        {name && floorplan}
-      </div>
+      <div className='main'>{jsx}</div>
     </MainStyle>
   )
+
+  function handleClickPrevious() {
+    if (target === 1) {
+      setTarget(pointCount)
+      return
+    }
+    setTarget(target-1)
+  }
+
+  function handleClickNext() {
+    if (target === pointCount) {
+      setTarget(1)
+      return
+    }
+    setTarget(target+1)
+  }
 }
 
 function createMainStyled() {
@@ -141,4 +137,19 @@ function createMainStyled() {
       cursor: pointer;
     }
   `
+}
+
+function createProjectList(setTarget) {
+  return {
+    '157CRivervalveCres': {
+      name: '157C Rivervalve Cres',
+      jsx: <FloorPlan6 className='main-svg' setTarget={setTarget}/>,
+      points: floorplan6Points
+    },
+    'VerdaleCondo': {
+      name: 'Verdale Condo',
+      jsx: <FloorPlan7 className='main-svg' setTarget={setTarget}/>,
+      points: floorplan7Points
+    }
+  }
 }

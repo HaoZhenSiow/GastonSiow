@@ -35,16 +35,16 @@ const projects = [
     sketchSrc: '/portfolio/sketch5.jpg'
   },
   {
-    title: 'VIJAY Condo',
+    title: '157C Rivervalve Cres',
     styling: 'Modern Lux',
-    housingType: '3 Room BTO',
+    housingType: '4 Room Condo',
     imgSrc: '/portfolio/portfolio6.jpg',
     sketchSrc: '/portfolio/sketch6.jpg'
   },
   {
-    title: 'VIVIAN Condo',
+    title: 'Verdale Condo',
     styling: 'Modern Lux',
-    housingType: '3 Room BTO',
+    housingType: '4 Room Condo',
     imgSrc: '/portfolio/portfolio7.jpg',
     sketchSrc: '/portfolio/sketch7.jpg'
   },

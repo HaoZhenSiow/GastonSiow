@@ -58,15 +58,13 @@ function createHeroStyled() {
     img {
       margin-top: 38px;
       margin-bottom: 80px;
-      max-width: 440px;
+      /* max-width: 440px; */
       width: 80vw;
       height: auto;
       flex-shrink: 0;
 
       @media (min-width: 768px) {
-        
-        
-        width: clamp(18.75rem, calc(-10.22rem + 60.34vw), 27.50rem); /* 300px to 440px, 768px to 1024px */
+        width: clamp(21.25rem, calc(8.43rem + 26.75vw), 32.50rem); /* 340px to 520px, 768px to 1024px */
       }
     }
   `
