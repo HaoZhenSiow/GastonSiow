@@ -11,7 +11,7 @@ export default function Hero() {
         <h1>Hi, my name is<br/><span>GASTON SIOW</span></h1>
         <p>I turn <span>ideas</span> into <span>reality</span></p>
       </div>
-      <Image src="/gaston1.png" alt="Gaston Siow" width={280} height={450} priority={true}/>
+      <Image src="/hero.png" alt="Gaston Siow" width={855} height={1334} priority={true}/>
     </HeroStyled>
   )
 }
@@ -59,7 +59,7 @@ function createHeroStyled() {
       margin-top: 38px;
       margin-bottom: 80px;
       max-width: 440px;
-      width: 60vw;
+      width: 80vw;
       height: auto;
       flex-shrink: 0;
 
