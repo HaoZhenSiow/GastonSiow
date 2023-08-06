@@ -1,6 +1,7 @@
 'use client'
 import { styled } from "styled-components"
 import Image from "next/image"
+import fluid from "fluid-jss"
 
 const HeroStyled = createHeroStyled()
 
@@ -58,13 +59,12 @@ function createHeroStyled() {
     img {
       margin-top: 38px;
       margin-bottom: 80px;
-      /* max-width: 440px; */
       width: 80vw;
       height: auto;
       flex-shrink: 0;
 
       @media (min-width: 768px) {
-        width: clamp(21.25rem, calc(8.43rem + 26.75vw), 32.50rem); /* 340px to 520px, 768px to 1024px */
+        width: ${fluid(340, 520, 768, 1024)}
       }
     }
   `

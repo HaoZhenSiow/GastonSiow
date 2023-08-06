@@ -1,3 +1,9 @@
+'use client'
+import { createGlobalStyle } from "styled-components";
+// import fluid from "@/_utils/fluid";
+import fluid from "fluid-jss";
+
+const InitStyle = createGlobalStyle`
 :root {
   --fluid-lg: clamp(1.38rem, calc(0.98rem + 2.02vw), 2.80rem);
   --fluid-h1: clamp(1.30rem, calc(1.00rem + 1.48vw), 2.33rem);
@@ -16,24 +22,24 @@
   --highlight-color: white;
   --white-bg-h2: #6D6D6D;
   --dark-bg-h2: #A7A7A7;
-  --logo-fs: clamp(1.50rem, calc(1.20rem + 1.44vw), 2.50rem); /* 24px to 40px, 330px, 1440px */
-  --h1-fs: clamp(1.63rem, calc(1.07rem + 2.70vw), 3.50rem); /* 26px to 56px, 330px, 1440px */
-  --name-fs: clamp(2.75rem, calc(2.01rem + 3.60vw), 5.25rem); /* 44px to 84px, 330px, 1440px */
+  --logo-fs: ${fluid(24, 40, 330, 1440)};
+  --h1-fs: ${fluid(26, 56, 330, 1440)};
+  --name-fs: ${fluid(44, 84, 330, 1440)};
   --hero-fs: 18px;
-  --section-h3-fs: clamp(2.00rem, calc(1.74rem + 1.26vw), 2.88rem); /* 32px to 46px, 330px, 1440px */
-  --portfolio-h3-fs: clamp(2.00rem, calc(1.93rem + 0.36vw), 2.25rem); /* 32px to 36px, 330px, 1440px */
+  --section-h3-fs: ${fluid(32, 46, 330, 1440)};
+  --portfolio-h3-fs: ${fluid(32, 36, 330, 1440)};
 }
 
 @media (min-width: 768px) {
   :root {
-    --name-fs: clamp(3.13rem, calc(2.00rem + 2.34vw), 3.50rem); /* 50px to 56px, 330px, 1024px */
-    --hero-fs: clamp(1.13rem, calc(0.41rem + 1.49vw), 1.75rem); /* 18px to 28px, 768px, 1440px */
+    --name-fs: ${fluid(50, 56, 330, 1024)};
+    --hero-fs: ${fluid(18, 28, 768, 1440)};
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --name-fs: clamp(3.50rem, calc(-4.50rem + 12.50vw), 6.75rem); /* 56px to 108px, 1024px, 1440px */
+    --name-fs: ${fluid(56, 108, 1024, 1440)};
   }
 }
 
@@ -158,3 +164,6 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type
   --paddingX: calc((100vw - var(--container-width))/2);
   padding-inline: var(--paddingX);
 }
+`;
+
+export default InitStyle;
