@@ -67,5 +67,6 @@ function createHeroStyled() {
         width: ${fluid(340, 520, 768, 1024)}
       }
     }
+    
   `
 }
