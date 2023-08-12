@@ -1,9 +1,9 @@
 'use client'
 import { styled } from 'styled-components'
 import { FaArrowLeft } from 'react-icons/fa'
-import { ImCross } from 'react-icons/im'
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { useState } from 'react'
+
+import KeenSlider from './KeenSlider'
 
 import FloorPlan6, { floorplan6Points } from '@/_floorplan/FloorPlan6'
 import FloorPlan7, { floorplan7Points } from '@/_floorplan/FloorPlan7'
@@ -13,48 +13,32 @@ const MainStyle = createMainStyled()
 export default function Home({ params }) {
   const [target, setTarget] = useState(null),
 
-        prevBtnAttrs = { className: 'clickable', onClick: handleClickPrevious },
-        nextBTNAttrs = { className: 'clickable', onClick: handleClickNext },
-
         projects = createProjectList(setTarget),
         project = projects[params.project] ? projects[params.project] : {},
         { name = '', jsx = '', points = [] } = project,
-        pointCount = points.length
+        imageSrc = points.map((point, inx) => (
+          `/portfolio/${name}/${inx+1}.jpg`
+        ))
+
+  function closeDialog(e) {
+    if (e.target === document.querySelector('.dialog')) {
+      setTarget(null)
+    }
+  }
 
   return (
     <MainStyle className='container'>
       <h1 onClick={() => history.back()}><FaArrowLeft/>{name || 'project not found'}</h1>
       {target && (
-        <div className='dialog'>
+        <div className='dialog' onMouseDown={closeDialog}>
           <div className="dialog__content">
-            <ImCross className='cross clickable' onClick={() => setTarget(null)}/>
-            <img src={`/portfolio/${name}/${target}.jpg`} alt={points[target]}/>
-            <div className='controll'>
-              <div {...prevBtnAttrs}><IoIosArrowBack/> Previous</div>
-              <div {...nextBTNAttrs}>Next <IoIosArrowForward/></div>
-            </div>
+            <KeenSlider images={imageSrc} target={target}/>
           </div>
         </div>
       )}
       <div className='main'>{jsx}</div>
     </MainStyle>
   )
-
-  function handleClickPrevious() {
-    if (target === 1) {
-      setTarget(pointCount)
-      return
-    }
-    setTarget(target-1)
-  }
-
-  function handleClickNext() {
-    if (target === pointCount) {
-      setTarget(1)
-      return
-    }
-    setTarget(target+1)
-  }
 }
 
 function createMainStyled() {
@@ -108,34 +92,21 @@ function createMainStyled() {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-      align-items: end;
-      row-gap: 10px;
-
-      img {
-        height: 70vh;
-      }
-
+      width: 40vw;
+      
+     
       @media (orientation: portrait) {
         width: 80vw;
 
-        img {
+        & > div {
           width: 100%;
-          height: auto;
-        }      
+        }
       }
 
-      .controll {
-        display: flex;
-        align-self: stretch;
-        justify-content: space-between;
-      }
+      
     }
 
-    .clickable {
-      cursor: pointer;
-    }
+    
   `
 }
 
