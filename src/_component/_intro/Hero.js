@@ -12,7 +12,8 @@ export default function Hero() {
         <h1>Hi, my name is<br/><span>GASTON SIOW</span></h1>
         <p>I turn <span>ideas</span> into <span>reality</span></p>
       </div>
-      <Image src="/hero.webp" alt="Gaston Siow" width={855} height={1334} priority={true}/>
+      {/* <Image src="/hero.webp" alt="Gaston Siow" width={855} height={1334} priority={true}/> */}
+      <img src="/hero.webp" alt="Gaston Siow" />
     </HeroStyled>
   )
 }
