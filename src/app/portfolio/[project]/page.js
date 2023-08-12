@@ -16,15 +16,19 @@ export default function Home({ params }) {
         projects = createProjectList(setTarget),
         project = projects[params.project] ? projects[params.project] : {},
         { name = '', jsx = '', points = [] } = project,
-        imageSrc = points.map((point, inx) => (
-          `/portfolio/${name}/${inx+1}.jpg`
-        ))
+        imageSrc = points.map((point, inx) => ({
+          hd: `/portfolio/${name}/${inx+1}.jpg`,
+          blur: `/portfolio/${name}/${inx+1}-small.jpg`,
+          label: point
+        }))
 
   function closeDialog(e) {
     if (e.target === document.querySelector('.dialog')) {
       setTarget(null)
     }
   }
+
+  console.log(target)
 
   return (
     <MainStyle className='container'>

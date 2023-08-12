@@ -2,17 +2,19 @@ import React, { useState } from "react"
 import { useKeenSlider } from "keen-slider/react"
 import styled from 'styled-components';
 import "keen-slider/keen-slider.min.css"
+
 import Image from "next/image";
 
 const Wrapper = createWrapper()
 const Dots = createDots()
+const Blur = createBlur()
 
-export default ({ images = [], target = 0 }) => {
+export default ({ images = [], target = 1 }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const [details, setDetails] = useState(null)
   const [sliderRef, instanceRef] = useKeenSlider({
-    initial: target,
+    initial: target-1,
     loop: true,
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)
@@ -40,11 +42,13 @@ export default ({ images = [], target = 0 }) => {
     <>
       <Wrapper>
         <div ref={sliderRef} className="keen-slider">
-          {images.map((image, index) => (
+          {images.map(({ hd, blur, label }, index) => (
             <div key={index} className="keen-slider__slide zoom-out__slide">
-              <div style={scaleStyle(index)}>
-                <Image src={image} alt="image" width={9763} height={9756} placeholder="blur" blurDataURL="/placeholder.jpg"/>
-              </div>
+              <Blur $blur={blur} style={scaleStyle(index)}>
+                <img src={hd} alt={label} loading="lazy" onLoad={e => 
+                    e.target.parentNode.classList.add('loaded')
+                  }/>
+              </Blur>
             </div>
           ))}
         </div>
@@ -118,21 +122,8 @@ function createWrapper() {
     .keen-slider__slide {
       cursor: grab;
 
-      & > div {
-        height: 100%;
-        display: flex;
-      align-items: center;
-      }
-
       &:active {
         cursor: grabbing;
-      }
-
-      img {
-        width: 100%;
-        height: auto;
-        max-height: 80vh;
-        object-fit: cover;
       }
     }
 
@@ -145,6 +136,7 @@ function createWrapper() {
       -webkit-transform: translateY(-50%);
       fill: #fff;
       cursor: pointer;
+      mix-blend-mode: difference;
     }
 
     .arrow--left {
@@ -154,10 +146,6 @@ function createWrapper() {
     .arrow--right {
       left: auto;
       right: 5px;
-    }
-
-    .arrow--disabled {
-      fill: rgba(255, 255, 255, 0.5);
     }
 
   `
@@ -187,5 +175,33 @@ function createDots() {
     .dot.active {
       background: #000;
     }
+  `
+}
+
+function createBlur() {
+
+  return styled.div`
+    height: 100%;
+    line-height: 0;
+    background-image: ${props => `url("${props.$blur}")`};
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
+    }
+
+    &[style="transform: scale(1);"].loaded img {
+      opacity: 1;
+    }
+
   `
 }
