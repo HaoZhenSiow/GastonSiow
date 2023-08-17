@@ -43,9 +43,9 @@ export default ({ images = [], target = 1 }) => {
       <Wrapper>
         <div ref={sliderRef} className="keen-slider">
           {images.map(({ hd, blur, label }, index) => (
-            <div key={index} className="keen-slider__slide zoom-out__slide">
-              <Blur $blur={blur} style={scaleStyle(index)}>
-                <img src={hd} alt={label} loading="lazy" onLoad={e => 
+            <div key={index} className="keen-slider__slide">
+              <Blur $blur={blur}>
+                <img src={hd} alt={label} loading="eager" onLoad={e => 
                     e.target.parentNode.classList.add('loaded')
                   }/>
               </Blur>
@@ -196,10 +196,10 @@ function createBlur() {
       max-height: 80vh;
       object-fit: contain;
       opacity: 0;
-      transition: opacity 250ms ease-in-out;
+      transition: opacity 0ms linear;
     }
 
-    &[style="transform: scale(1);"].loaded img {
+    &.loaded img {
       opacity: 1;
     }
 

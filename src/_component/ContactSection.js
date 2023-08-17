@@ -40,22 +40,35 @@ export default function ContactSection(props) {
           <p><MdEmail className='icon'/> hk.siow@comuna.com.sg</p>
         </address>
         <form ref={formRef} action={handleSubmit}>
-          <label htmlFor="name">Name <span>(required)</span></label>
-          <input type="text" name="name" id="name" required/>
-          <label htmlFor="phone">Phone <span>(required)</span></label>
-          <input type="number" name="phone" id="phone" required/>
-          <label htmlFor="email">Email <span>(required)</span></label>
-          <input type="email" name="email" id="email" required/>
-          <label htmlFor="type">Housing Type <span>(required)</span></label>
-          <select name="type" id="type" required>
-            <option value="BTO">BTO</option>
-            <option value="HDB">HDB</option>
-            <option value="Condo">Condo</option>
-          </select>
-          <label htmlFor="collection">Key Collection Date <span>(required)</span></label>
-          <input type="date" name="collection" id="collection" required/>
-          <label htmlFor="message">Message <span>(if applicable)</span></label>
-          <textarea name="message" id="message" rows="10"></textarea>
+          <div className='input-wrapper'>
+            <label htmlFor="name">Name <span>(required)</span></label>
+            <input type="text" name="name" id="name" required/>
+          </div>
+          <div className='input-wrapper'>
+            <label htmlFor="phone">Phone <span>(required)</span></label>
+            <input type="number" name="phone" id="phone" required/>
+          </div>
+          <div className='input-wrapper'>
+            <label htmlFor="email">Email <span>(required)</span></label>
+            <input type="email" name="email" id="email" required/>
+          </div>
+          <div className='input-wrapper'>
+            <label htmlFor="type">Housing Type <span>(required)</span></label>
+            <select name="type" id="type" required>
+              <option value="BTO">BTO</option>
+              <option value="HDB">HDB</option>
+              <option value="Condo">Condo</option>
+            </select>
+          </div>
+          <div className='input-wrapper'>
+            <label htmlFor="collection">Key Collection Date <span>(required)</span></label>
+            <input type="date" name="collection" id="collection" required/>
+          </div>
+          <div className='textarea-wrapper'>
+            <label htmlFor="message">Message <span>(if applicable)</span></label>
+            <textarea name="message" id="message" rows="10"></textarea>
+            
+          </div>
           <button type="submit" disabled={isSending}>SUBMIT</button>
         </form>
       </div>
@@ -70,20 +83,15 @@ function createContactSectionStyled() {
       flex-direction: column;
 
       @media (min-width: 900px) {
-        flex-direction: row-reverse;
-        column-gap: 28px;
-
-        form {
-          width: 50%;
-          flex-grow: 1;
-          margin-top: 0;
-
-          label:first-child {
-            margin-top: 0;
-          }
-        }
+        flex-direction: row;
+        column-gap: 40px;
       }
     }
+
+    address > p {
+      width: max-content;
+    }
+
     h2 {
       @media (max-width: 899px) {
        margin-bottom: 36px !important;
@@ -106,12 +114,6 @@ function createContactSectionStyled() {
       flex-direction: column;
       margin-top: 54px;
 
-      label {
-        color: var(--pri-color);
-        margin-top: 1em;
-        margin-bottom: .5em;
-      }
-
       span {
         opacity: .7;
       }
@@ -121,6 +123,12 @@ function createContactSectionStyled() {
         font-family: var(--pri-font);
         font-size: var(--fluid-5);
         padding: .2em .4em;
+        margin-top: .5em;
+        margin-bottom: 1em;
+      }
+
+      textarea {
+        margin-bottom: 0;
       }
 
       button {
@@ -129,6 +137,29 @@ function createContactSectionStyled() {
         letter-spacing: .2em;
         margin-top: 1em;
         padding-block: .7em;
+      }
+
+      @media (min-width: 900px) {
+        
+        flex-grow: 1;
+        margin-top: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1em;
+
+        .input-wrapper {
+          width: 48%;
+        }
+
+        .textarea-wrapper {
+          width: 100%;
+        }
+
+        button {
+          width: 100%;
+        }
+        
       }
     }
   `

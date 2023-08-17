@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import ClientOnly from '@/_component/ClientOnly'
 import InitStyle from './InitStyle'
+import StyledComponentsRegistry from '@/_utils/registry'
 
 export const metadata = {
   title: 'Gaston Siow',
@@ -18,7 +19,9 @@ export default function RootLayout({ children }) {
       <body>
         <InitStyle/>
         <ClientOnly>
-          {children}
+          <StyledComponentsRegistry>
+            {children}
+          </StyledComponentsRegistry>
         </ClientOnly>
       </body>
     </html>

@@ -54,9 +54,11 @@ function createAboutStyled() {
       width: 100%;
       height: auto;
       border-bottom: black solid 4px;
+      scale: .8;
 
       @media (min-width: 768px) {
         width: clamp(20.31rem, calc(18.17rem + 4.46vw), 22.19rem); /* 325px to 355px, 768px, 1440px */
+        scale: 1;
       }
     }
   `

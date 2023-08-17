@@ -26,7 +26,7 @@ function createPortfolioSectionStyled() {
       grid-column-gap: 20px;
 
       @media (min-width: 768px) {
-        grid-template-columns: repeat( auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat( auto-fit, minmax(300px, 1fr));
       }
     }
   `

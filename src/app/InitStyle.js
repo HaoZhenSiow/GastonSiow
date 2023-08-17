@@ -32,14 +32,8 @@ const InitStyle = createGlobalStyle`
 
 @media (min-width: 768px) {
   :root {
-    --name-fs: ${fluid(50, 56, 330, 1024)};
+    --name-fs: ${fluid(54, 108, 768, 1440)};
     --hero-fs: ${fluid(18, 28, 768, 1440)};
-  }
-}
-
-@media (min-width: 1024px) {
-  :root {
-    --name-fs: ${fluid(56, 108, 1024, 1440)};
   }
 }
 

@@ -13,9 +13,6 @@ import Footer from "@/_component/Footer"
 const MainStyle = createMainStyled()
 
 export default function Home() {
-  const obj1 = { test: 'sdasd' }
-  const obj2 = structuredClone(obj1)
-  console.log(obj1 === obj2)
   return (
     <>
       <Header/>

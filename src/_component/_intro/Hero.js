@@ -58,14 +58,14 @@ function createHeroStyled() {
     }
 
     img {
-      margin-top: 38px;
-      margin-bottom: 80px;
+      /* margin-top: 38px; */
+      /* margin-bottom: 80px; */
       width: 80vw;
       height: auto;
       flex-shrink: 0;
 
       @media (min-width: 768px) {
-        width: ${fluid(340, 520, 768, 1024)}
+        width: ${fluid(320, 520, 768, 1440)}
       }
     }
     
