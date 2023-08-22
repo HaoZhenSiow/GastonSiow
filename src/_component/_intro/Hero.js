@@ -12,8 +12,8 @@ export default function Hero() {
         <h1 className="animate__animated animate__fadeInLeft">Hi, my name is<br/><span>GASTON SIOW</span></h1>
         <p className="animate__animated animate__fadeInUp">I turn <span>ideas</span> into <span>reality</span></p>
       </div>
-      {/* <Image src="/hero.webp" alt="Gaston Siow" width={855} height={1334} priority={true}/> */}
-      <img src="/hero.webp" alt="Gaston Siow" />
+      <Image className="animate__animated animate__fadeInRight" src="/hero.webp" alt="Gaston Siow" width={1066} height={1600} priority={true}/>
+      {/* <img src="/hero.webp" alt="Gaston Siow"/> */}
     </HeroStyled>
   )
 }
