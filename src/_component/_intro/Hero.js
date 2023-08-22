@@ -13,7 +13,7 @@ export default function Hero() {
         <p className="animate__animated animate__fadeInUp">I turn <span>ideas</span> into <span>reality</span></p>
       </div>
       {/* <Image src="/hero.webp" alt="Gaston Siow" width={855} height={1334} priority={true}/> */}
-      <img className="animate__animated animate__fadeInRight" src="/hero.webp" alt="Gaston Siow" />
+      <img className="animate__animated animate__fadeInUp" src="/hero.webp" alt="Gaston Siow" />
     </HeroStyled>
   )
 }
