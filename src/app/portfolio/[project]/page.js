@@ -123,10 +123,34 @@ function createMainStyled() {
 function createProjectList(setTarget) {
   return {
     '654BPunggol': {
-      name: '654B Punggol'
+      name: '654B Punggol',
+      markers: [
+        { coords: '2270,3949,233', name: 'Foyer Area' },
+        { coords: '2023,5476,212', name: 'Living Area 1' },
+        { coords: '901,5016,203', name: 'Living Area 2' },
+        { coords: '2170,4530,238', name: 'Dinning Area' },
+        { coords: '3657,3593,196', name: 'Kitchen 1' },
+        { coords: '3219,4060,216', name: 'Kitchen 2' },
+        { coords: '1670,3690,217', name: 'Work Area' },
+        { coords: '982,1626,200', name: 'Master Bedroom 1' },
+        { coords: '384,962,224', name: 'Master Bedroom 2' },
+        { coords: '2943,1454,206', name: 'Master Bathroom 1' },
+        { coords: '2539,1588,194', name: 'Master Bathroom 2' },
+        { coords: '2607,2610,205', name: 'Common Bathroom' }
+      ]
     },
     '189AMarsilingRoad': {
-      name: '189A Marsiling Road'
+      name: '189A Marsiling Road',
+      markers: [
+        { coords: '368,403,52', name: 'Foyer Area' },
+        { coords: '652,355,39', name: 'Dinning Area' },
+        { coords: '648,244,51', name: 'Living Area 1' },
+        { coords: '567,395,45', name: 'Living Area 2' },
+        { coords: '785,162,50', name: 'Living Area 3' },
+        { coords: '261,706,52', name: 'Kitchen' },
+        { coords: '739,471,53', name: 'Bedroom 1' },
+        { coords: '912,496,55', name: 'Bedroom 2' }
+      ]
     },
     '788EWoodlandsCrescent': {
       name: '788E Woodlands Crescent',
@@ -165,7 +189,25 @@ function createProjectList(setTarget) {
       ]
     },
     'FloraDriveResidential': {
-      name: 'Flora Drive Residential'
+      name: 'Flora Drive Residential',
+      markers: [
+        { coords: '2000,670,86', name: 'Foyer Area' },
+        { coords: '1928,814,72', name: 'Dinning Area' },
+        { coords: '877,1246,96', name: 'Kitchen' },
+        { coords: '1619,1664,85', name: 'Living Room 1' },
+        { coords: '1784,1427,92', name: 'Living Room 2' },
+        { coords: '1686,2069,96', name: 'Work Space' },
+        { coords: '1433,1625,72', name: 'Common Bathroom 1' },
+        { coords: '1393,1762,72', name: 'Common Bathroom 2' },
+        { coords: '922,2687,82', name: 'Master Bedroom 1' },
+        { coords: '752,2918,93', name: 'Master Bedroom 2' },
+        { coords: '542,2566,79', name: 'Master Bedroom 3' },
+        { coords: '929,1767,81', name: 'Master Bathroom 1' },
+        { coords: '794,1962,66', name: 'Master Bathroom 2' },
+        { coords: '698,1825,89', name: 'Master Bathroom 3' },
+        { coords: '1354,2687,79', name: 'Guest/Study Room 1' },
+        { coords: '1356,2846,73', name: 'Guest/Study Room 2' }
+      ]
     },
     '157CRivervalveCres': {
       name: '157C Rivervalve Cres',
@@ -193,6 +235,20 @@ function createProjectList(setTarget) {
         { coords: '251,310,34', name: 'Dinning Area' },
         { coords: '588,485,34', name: 'Living Room 2' },
         { coords: '818,1299,32', name: 'Master Bedroom' }
+      ]
+    },
+    'LaFeistaCondo': {
+      name: 'La Feista Condo',
+      markers: [
+        { coords: '4250,6439,220', name: 'Foyer Area' },
+        { coords: '4861,6143,239', name: 'Kitchen' },
+        { coords: '3525,6328,288', name: 'Living Room 1' },
+        { coords: '2502,6055,230', name: 'Living Room 2' },
+        { coords: '3074,5073,248', name: 'Living Room 3' },
+        { coords: '1536,5552,344', name: 'Living Room 4' },
+        { coords: '2258,2137,379', name: 'Master Bedroom' },
+        { coords: '3927,2563,333', name: 'Master Bathroom' },
+        { coords: '3941,3509,346', name: 'Common Bathroom' }
       ]
     },
   }
