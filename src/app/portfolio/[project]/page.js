@@ -209,8 +209,8 @@ function createProjectList(setTarget) {
         { coords: '1356,2846,73', name: 'Guest/Study Room 2' }
       ]
     },
-    '157CRivervalveCres': {
-      name: '157C Rivervalve Cres',
+    '157CRivervaleCres': {
+      name: '157C Rivervale Cres',
       markers: [
         { coords: '756,529,35', name: 'Foyer Area' },
         { coords: '1218,983,32', name: 'Kitchen 1' },

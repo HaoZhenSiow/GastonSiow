@@ -35,7 +35,7 @@ const projects = [
     sketchSrc: '/portfolio/sketch5.jpg'
   },
   {
-    title: '157C Rivervalve Cres',
+    title: '157C Rivervale Cres',
     styling: 'Contemporary',
     housingType: '5 Room HDB',
     imgSrc: '/portfolio/portfolio6.jpg',
