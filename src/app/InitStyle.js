@@ -27,7 +27,7 @@ const InitStyle = createGlobalStyle`
   --name-fs: ${fluid(44, 84, 330, 1440)};
   --hero-fs: 18px;
   --section-h3-fs: ${fluid(32, 46, 330, 1440)};
-  --portfolio-h3-fs: ${fluid(32, 36, 330, 1440)};
+  --portfolio-h3-fs: ${fluid(26, 34, 330, 1440)};
 }
 
 @media (min-width: 768px) {

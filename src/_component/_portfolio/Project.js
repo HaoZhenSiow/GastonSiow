@@ -30,14 +30,14 @@ export default function Project({ title, styling, housingType, imgSrc, sketchSrc
 
   return (
     <ProjectStyled $imgSrc={imgSrc} className="project" href={`/portfolio/${title.replace(/\s+/g, '')}`}>
+      <h3>{title}</h3>
+      <div className="drawing">
+        <Image src={sketchSrc} alt="portfolio" width={351} height={202} ref={imgRef} priority={true}/>
+      </div>
       <div className="project__details">
         <p className='style'>{styling}</p>
         <p>{housingType}</p>
       </div>
-      <div className="drawing">
-        <Image src={sketchSrc} alt="portfolio" width={351} height={202} ref={imgRef} priority={true}/>
-      </div>
-      <h3>{title}</h3>
     </ProjectStyled>
   );
 }
@@ -71,6 +71,7 @@ function createProjectStyled() {
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
+    container-type: inline-size;
 
     &:last-child {
       margin-bottom: 0;
@@ -115,10 +116,11 @@ function createProjectStyled() {
     }
 
     h3 {
-      font-size: var(--portfolio-h3-fs);
+      /* font-size: var(--portfolio-h3-fs); */
+      font-size: 8cqi;
       font-family: var(--sec-font);
-      margin-bottom: .4em;
-      flex-grow: 1;
+      margin-bottom: .1em;
+      /* flex-grow: 1; */
     }
 
     .project__details {
@@ -127,7 +129,7 @@ function createProjectStyled() {
     }
 
     .style {
-      letter-spacing: .3em;
+      letter-spacing: .1em;
     }
   `
 }
