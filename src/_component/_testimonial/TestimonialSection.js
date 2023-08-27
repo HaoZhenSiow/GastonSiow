@@ -16,6 +16,7 @@ export default function TestimonialSection(props) {
         <div>
           <Image src={"/testimonials/testimonial2.jpeg"} alt="Review from Kelvin" width={473} height={1024} priority={true}/>
         </div>
+        <div></div>
         {/* <Testimonial/>
         <Testimonial/>
         <Testimonial/> */}
